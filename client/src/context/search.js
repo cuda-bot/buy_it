@@ -5,10 +5,10 @@ const SearchContext = createContext();
 
 //Step 2
 const SearchProvider = ({ children }) => {
-  const [auth, setAuth] = useState({ keyword: "", results: [] });
+  const [values, setValues] = useState({ keyword: "", results: [] });
 
   return (
-    <SearchContext.Provider value={[auth, setAuth]}>
+    <SearchContext.Provider value={[values, setValues]}>
       {children}
     </SearchContext.Provider>
   );
