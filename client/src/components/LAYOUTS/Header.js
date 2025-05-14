@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { GiShoppingBag } from "react-icons/gi";
-import { AuthProvider, useAuthContext } from "../../context/auth";
+import { useAuthContext } from "../../context/auth";
 import SearchInput from "../Form/SearchInput";
 import useCategory from "../../hooks/useCategory";
 import { useCartContext } from "../../context/cart";
@@ -100,9 +100,8 @@ const Header = () => {
                     <ul className="dropdown-menu">
                       <li>
                         <NavLink
-                          to={`/dashboard/${
-                            auth?.user?.role === 1 ? "admin" : "user"
-                          }`}
+                          to={`/dashboard/${auth?.user?.role === 1 ? "admin" : "user"
+                            }`}
                           className="dropdown-item"
                         >
                           DASHBOARD
