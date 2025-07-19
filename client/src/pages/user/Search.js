@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 
 const Search = () => {
   const navigate = useNavigate();
-  const [values, setValues] = useSearchContext(); //for initialising context
+  const [values] = useSearchContext(); //for initialising context
   const [cart, setCart] = useCartContext();
   return (
     <Layout>

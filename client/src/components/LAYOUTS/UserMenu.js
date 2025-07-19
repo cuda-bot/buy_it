@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { useAuthContext } from "../../context/auth";
 
 const UserMenu = () => {
-  const [auth, setAuth] = useAuthContext();
   return (
     <>
       <div className="text-center">

@@ -15,8 +15,8 @@ const ProductDetails = () => {
 
   //initalp details
   useEffect(() => {
-    if (params?.slug) getProduct();
-  }, [params?.slug]);
+    getProduct();
+  }, [getProduct]);
   //getProduct
   const getProduct = async () => {
     try {
@@ -40,6 +40,7 @@ const ProductDetails = () => {
       console.log(error);
     }
   };
+  console.log("relatedProducts", relatedProducts);
   return (
     <Layout>
       <div className="row container product-details">

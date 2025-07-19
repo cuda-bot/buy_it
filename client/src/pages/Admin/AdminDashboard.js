@@ -4,7 +4,7 @@ import AdminMenu from "../../components/LAYOUTS/AdminMenu";
 import { useAuthContext } from "../../context/auth";
 
 const AdminDashboard = () => {
-  const [auth, setAuth] = useAuthContext();
+  const [auth] = useAuthContext();
   return (
     <Layout>
       <div className="container-fluid m-3 p-5">

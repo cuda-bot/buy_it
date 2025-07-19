@@ -10,13 +10,12 @@ const Profile = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
 
   //get user data
   useEffect(() => {
-    const { name, email, password, address, phone } = auth.user;
+    const { name, email, address, phone } = auth.user;
     setName(name);
     setEmail(email);
     setAddress(address);
@@ -29,7 +28,6 @@ const Profile = () => {
       const { data } = await axios.put("/api/v1/auth/profile", {
         name,
         email,
-        password,
         phone,
         address,
       });
@@ -82,16 +80,6 @@ const Profile = () => {
                     id="exampleInputEmail1"
                     placeholder="Enter Your Email "
                     disabled
-                  />
-                </div>
-                <div className="mb-3">
-                  <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="form-control"
-                    id="exampleInputPassword1"
-                    placeholder="Enter Your Password"
                   />
                 </div>
                 <div className="mb-3">

@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 import Spinner from "../Spinner";
 
 const AdminRoute = () => {
-  const [auth, setAuth] = useAuthContext();
+  const [auth] = useAuthContext();
   const [ok, setOk] = useState(false);
 
   useEffect(() => {

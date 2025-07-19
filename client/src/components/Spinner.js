@@ -10,7 +10,7 @@ const Spinner = ({ path = "login" }) => {
     }, 1000);
     count === 0 && navigate(`/${path}`);
     return () => clearInterval(interval);
-  }, [count, navigate]);
+  }, [count, navigate, path]);
 
   return (
     <div

@@ -7,6 +7,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Layout from "../components/LAYOUTS/Layout";
 import { AiOutlineReload } from "react-icons/ai";
+import { FaBeer } from "react-icons/fa";
 import "../styles/HomePage.css";
 
 const HomePage = () => {
@@ -106,6 +107,7 @@ const HomePage = () => {
       console.log(error);
     }
   };
+  console.log(products);
   return (
     <Layout title={"ALL Products - Best offers "}>
       {/* banner image */}
@@ -211,7 +213,7 @@ const HomePage = () => {
                 ) : (
                   <>
                     {" "}
-                    Loadmore <AiOutlineReload />
+                    Loadmore <FaBeer />
                   </>
                 )}
               </button>

@@ -1,28 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../../components/LAYOUTS/Layout";
 import AdminMenu from "../../components/LAYOUTS/AdminMenu";
-import { useAuthContext } from "../../context/auth";
 import axios from "axios";
 import moment from "moment";
 import { Select } from "antd";
-import toast from "react-hot-toast";
-const { Option } = Select;
+import { useAuthContext } from "../../context/auth";
 
 const AdminOrders = () => {
-  const [status, setStatus] = useState([
-    "Not Process",
-    "Processing",
-    "Shipped",
-    "delivered",
-    "cancel",
-  ]);
-  const [changeStatus, setChangeStatus] = useState("");
-  const [auth, setAuth] = useAuthContext();
   const [orders, setOrders] = useState([]);
+  const [auth] = useAuthContext();
   const getOrders = async () => {
     try {
-      const { data } = await axios.get("/api/v1/auth/all-orders");
-      setOrders(data);
+      const res = await axios.get("/api/v1/auth/all-orders");
+      setOrders(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -78,11 +68,12 @@ const AdminOrders = () => {
                           }}
                           defaultValue={o?.status}
                         >
-                          {status.map((s, i) => (
-                            <Option key={i} value={s}>
-                              {s}
-                            </Option>
-                          ))}
+                          {/* status is not defined, so this loop will not render */}
+                          {/* {status.map((s, i) => ( */}
+                          {/*   <Option key={i} value={s}> */}
+                          {/*     {s} */}
+                          {/*   </Option> */}
+                          {/* ))} */}
                         </Select>
                       </td>
                       <td>{o?.buyer?.name}</td>

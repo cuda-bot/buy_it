@@ -16,15 +16,11 @@ const CreateCategory = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("/api/v1/category/create-category", {
+      await axios.post("/api/v1/category/create-category", {
         name,
       });
-      if (data?.success) {
-        toast.success(`${name} is created`);
-        getAllCategory();
-      } else {
-        toast.error(data.message);
-      }
+      toast.success(`${name} is created`);
+      getAllCategory();
     } catch (error) {
       console.log(error);
       toast.error("something went wrong in input form");

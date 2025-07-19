@@ -14,19 +14,25 @@
   "author": "Vishnu",
   "license": "MIT",
   "dependencies": {
+    "antd": "^5.26.5",
     "bcrypt": "^5.1.1",
     "braintree": "^3.21.0",
     "colors": "^1.4.0",
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
+    "esquery": "^1.6.0",
     "express": "^4.18.2",
     "express-formidable": "^1.2.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.3",
     "morgan": "^1.10.0",
     "nodemon": "^3.0.2",
+    "postcss-color-functional-notation": "^7.0.10",
     "react-icons": "^4.12.0",
     "slugify": "^1.6.6"
+  },
+  "devDependencies": {
+    "terser-webpack-plugin": "^5.3.14"
   }
 }

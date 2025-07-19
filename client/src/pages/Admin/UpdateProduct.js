@@ -45,7 +45,7 @@ const UpdateProduct = () => {
   };
   useEffect(() => {
     getProduct();
-  }, []);
+  }, [getProduct]);
 
   //get all categories
   const getAllCategory = async () => {
@@ -164,7 +164,7 @@ const UpdateProduct = () => {
                   <div className="text-center">
                     <img
                       src={URL.createObjectURL(photo)}
-                      alt="product image"
+                      alt={name}
                       height={"200px"}
                       className="img img-responsive"
                     />
@@ -173,7 +173,7 @@ const UpdateProduct = () => {
                   <div className="text-center">
                     <img
                       src={`/api/v1/product/product-photo/${id}`}
-                      alt="product image"
+                      alt={name}
                       height={"200px"}
                       className="img img-responsive"
                     />

@@ -13,9 +13,6 @@ const CategoryProduct = () => {
   const [category, setCategory] = useState([]);
   const [cart, setCart] = useCartContext();
 
-  useEffect(() => {
-    if (params?.slug) getPrductsByCat();
-  }, [params?.slug]);
   const getPrductsByCat = async () => {
     try {
       const { data } = await axios.get(
@@ -27,6 +24,10 @@ const CategoryProduct = () => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    getPrductsByCat();
+  }, [params?.slug]);
 
   return (
     <Layout>
