@@ -1,70 +1,172 @@
-# Getting Started with Create React App
+# BuyIt E-Commerce Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+BuyIt is a full-stack MERN (MongoDB, Express, React, Node.js) e-commerce platform. It provides a robust backend REST API and a modern React frontend for users and administrators to manage products, categories, orders, and more.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Table of Contents
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+  - [Backend Setup](#backend-setup)
+  - [Frontend Setup](#frontend-setup)
+- [Environment Variables](#environment-variables)
+- [Scripts](#scripts)
+- [API Overview](#api-overview)
+- [License](#license)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### User Features
+- User registration, login, and password reset
+- Browse products by category, price, and search
+- Product details and related products
+- Shopping cart and checkout (Braintree payment integration)
+- View and manage orders
+- Update user profile and address
 
-### `npm test`
+### Admin Features
+- Admin dashboard
+- Create, update, and delete products
+- Create, update, and delete categories
+- View and manage all orders
+- View all users
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### General
+- Responsive UI with Ant Design and custom styles
+- RESTful API with JWT authentication
+- MongoDB for data storage
+- Error handling and notifications
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tech Stack
+- **Frontend:** React, React Router, Ant Design, Axios, React Context API
+- **Backend:** Node.js, Express, MongoDB, Mongoose, JWT, Braintree
+- **Other:** Nodemon, Morgan, dotenv, concurrently
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Project Structure
 
-### `npm run eject`
+```
+e-commerce/
+  ├── client/           # React frontend
+  │   ├── src/
+  │   └── public/
+  ├── controllers/      # Express controllers
+  ├── helpers/          # Helper functions
+  ├── middlewares/      # Express middlewares
+  ├── models/           # Mongoose models
+  ├── routes/           # Express routes
+  ├── config/           # DB config
+  ├── server.js         # Express entry point
+  └── package.json      # Backend dependencies
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Backend Setup
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+2. **Create a `.env` file** in the root with the following variables:
+   ```env
+   MONGO_URL=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret
+   BRAINTREE_MERCHANT_ID=your_braintree_merchant_id
+   BRAINTREE_PUBLIC_KEY=your_braintree_public_key
+   BRAINTREE_PRIVATE_KEY=your_braintree_private_key
+   DEV_MODE=development
+   PORT=8080
+   ```
+3. **Start the backend server:**
+   ```bash
+   npm run server
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Frontend Setup
+1. **Navigate to the client folder:**
+   ```bash
+   cd client
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Start the React app:**
+   ```bash
+   npm start
+   ```
+   The app will run on [http://localhost:3000](http://localhost:3000)
 
-## Learn More
+### Run Both (Dev Mode)
+From the root directory:
+```bash
+npm run dev
+```
+This will start both backend and frontend concurrently.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Environment Variables
+- `MONGO_URL`: MongoDB connection string
+- `JWT_SECRET`: Secret for JWT authentication
+- `BRAINTREE_MERCHANT_ID`, `BRAINTREE_PUBLIC_KEY`, `BRAINTREE_PRIVATE_KEY`: Braintree payment credentials
+- `DEV_MODE`: Set to `development` for local dev
+- `PORT`: Port for backend server (default: 8080)
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Scripts
+- `npm run server` — Start backend with nodemon
+- `npm run client` — Start frontend React app
+- `npm run dev` — Start both backend and frontend concurrently
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## API Overview
 
-### Making a Progressive Web App
+### Auth
+- `POST /api/v1/auth/register` — Register user
+- `POST /api/v1/auth/login` — Login user
+- `POST /api/v1/auth/resetpassword` — Reset password
+- `PUT /api/v1/auth/profile` — Update profile
+- `GET /api/v1/auth/orders` — Get user orders
+- `GET /api/v1/auth/all-orders` — Get all orders (admin)
+- `PUT /api/v1/auth/order-status/:oid` — Update order status (admin)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Category
+- `POST /api/v1/category/create-category` — Create category (admin)
+- `PUT /api/v1/category/update-category/:id` — Update category (admin)
+- `GET /api/v1/category/get-category` — Get all categories
+- `GET /api/v1/category/single-category/:slug` — Get single category
+- `DELETE /api/v1/category/delete-category/:id` — Delete category (admin)
 
-### Advanced Configuration
+### Product
+- `POST /api/v1/product/create-product` — Create product (admin)
+- `PUT /api/v1/product/update-product/:pid` — Update product (admin)
+- `GET /api/v1/product/get-product` — Get all products
+- `GET /api/v1/product/get-product/:slug` — Get single product
+- `GET /api/v1/product/product-photo/:pid` — Get product photo
+- `DELETE /api/v1/product/product-delete/:pid` — Delete product (admin)
+- `POST /api/v1/product/product-filters` — Filter products
+- `GET /api/v1/product/product-count` — Get product count
+- `GET /api/v1/product/product-list/:page` — Get paginated products
+- `GET /api/v1/product/search/:keyword` — Search products
+- `GET /api/v1/product/related-product/:pid/:cid` — Get related products
+- `GET /api/v1/product/product-category/:slug` — Get products by category
+- `GET /api/v1/product/braintree/token` — Get Braintree token
+- `POST /api/v1/product/braintree/payment` — Make payment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT
