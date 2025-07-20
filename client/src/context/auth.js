@@ -9,6 +9,8 @@ const AuthProvider = ({ children }) => {
 
   //deafult axios settings
   axios.defaults.headers.common["Authorization"] = auth?.token;
+  // Set base URL for axios
+  axios.defaults.baseURL = process.env.REACT_APP_API_URL || "http://localhost:8080";
 
   useEffect(() => {
     const data = localStorage.getItem("authinfo");
