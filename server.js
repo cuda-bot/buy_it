@@ -14,7 +14,7 @@ dotenv.config();
 
 // Allowed origins for CORS
 const allowedOrigins = [
-  'https://buy-it-two.vercel.app/', // <-- Replace with your actual Vercel frontend URL
+  'https://buy-it-two.vercel.app', // <-- Replace with your actual Vercel frontend URL
   'http://localhost:3000'            // For local development
 ];
 
